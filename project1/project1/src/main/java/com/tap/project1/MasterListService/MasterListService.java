@@ -1,23 +1,139 @@
-package com.tap.project1.MasterListService;
+package com.tap.project1.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.tap.project1.repository.MasterListRepository;
-import com.tap.project1.model.MasterList;
+import jakarta.persistence.*;
 
-import java.util.List;
-
-@Service
-public class MasterListService {
+@Entity
+@Table(name = "master_list")
+public class MasterList {
     
-    @Autowired
-    private MasterListRepository repository;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String parentCode;
+    private String parentName;
+    private String name;
+    private String plan;
+    private String option;
+    private String optionFrequency;
+    private Boolean transactionModeAllowed;
+    private String subCategory;
+    private String sector;
+    private int benchmark;
+    private int faceValue;
 
-    public List<MasterList> getAllMasterLists() {
-        return repository.findAll();
+    public MasterList() {}
+
+    public MasterList(Long id, String parentCode, String parentName, String name, String plan, String option, 
+                      String optionFrequency, Boolean transactionModeAllowed, String subCategory, 
+                      String sector, int benchmark, int faceValue) {
+        this.id = id;
+        this.parentCode = parentCode;
+        this.parentName = parentName;
+        this.name = name;
+        this.plan = plan;
+        this.option = option;
+        this.optionFrequency = optionFrequency;
+        this.transactionModeAllowed = transactionModeAllowed;
+        this.subCategory = subCategory;
+        this.sector = sector;
+        this.benchmark = benchmark;
+        this.faceValue = faceValue;
     }
 
-    public MasterList saveMasterList(MasterList masterList) {
-        return repository.save(masterList);
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
+    }
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    public String getOptionFrequency() {
+        return optionFrequency;
+    }
+
+    public void setOptionFrequency(String optionFrequency) {
+        this.optionFrequency = optionFrequency;
+    }
+
+    public Boolean getTransactionModeAllowed() {
+        return transactionModeAllowed;
+    }
+
+    public void setTransactionModeAllowed(Boolean transactionModeAllowed) {
+        this.transactionModeAllowed = transactionModeAllowed;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+    public int getBenchmark() {
+        return benchmark;
+    }
+
+    public void setBenchmark(int benchmark) {
+        this.benchmark = benchmark;
+    }
+
+    public int getFaceValue() {
+        return faceValue;
+    }
+
+    public void setFaceValue(int faceValue) {
+        this.faceValue = faceValue;
     }
 }
